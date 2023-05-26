@@ -5,13 +5,36 @@
     <title>MPSI-MP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script>
+    function searchTable() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("searchInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("Table");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows and hide those that don't match the search query
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0]; // Assuming the search is based on the first column
+          if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+              } else {
+                  tr[i].style.display = "none";
+              }
+          }
+      }
+    }
+  </script>
 </head>
 <body>
 <header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 16px">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">PrepaAcademie</a>
+            <a class="navbar-brand">PrepaAcademie</a>
             <button
                     class="navbar-toggler"
                     type="button"
@@ -25,42 +48,69 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Section</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">About</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                 </ul>
                 <form class="d-flex input-group w-auto">
                     <input
+                            id="searchInput"
                             type="search"
                             class="form-control"
-                            placeholder="Type query"
+                            placeholder="recherche"
                             aria-label="Search"
+                            onkeyup="searchTable()"
                     />
-                    <button
-                            class="btn btn-outline-primary"
-                            type="button"
-                            data-mdb-ripple-color="dark"
-                    >
-                        Search
-                    </button>
                 </form>
             </div>
         </div>
     </nav>
+      <div
+            id="home"
+            class="p-5 text-center bg-image"
+            style="
+      background-image: url('/home.jpg');
+      height: 600px;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    "
+    >
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); width: 50vw; padding: 20px;border-radius: 10px">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">MPSI-MP</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
+<div style="padding: 20px">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <h1>Mathematique</h1>
+    </section>
+</div>
+<div style="padding: 20px">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <h1>Physique</h1>
+    </section>
+</div>
+<div style="padding: 20px">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <h1>Chimie</h1>
+    </section>
+</div>
+<div style="padding: 20px">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <h1>Sciences industrielles</h1>
+    </section>
+</div>
 <div style="padding: 20px">
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <h1>Informatique</h1>
     </section>
-    <table class="table table-bordered border-primary">
+    <table id="Table" class="table table-bordered border-primary">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -302,5 +352,53 @@
 
 
 </div>
+<section id="about" class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <h1>About</h1>
+</section>
+<footer class="text-center text-lg-start bg-light text-muted">
+
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>PrepaAcademie
+                    </h6>
+                    <p>
+                        PrépaAcadémie est la première plateforme en ligne pour les étudiants préparatoires au Maroc, en France et en Tunisie. Des cours sur mesure, une interface conviviale et la flexibilité d'apprentissage personnalisé permettent aux étudiants d'exceller et de libérer leur plein potentiel académique. Rejoignez-nous pour ouvrir la voie à votre réussite scolaire.
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Section
+                    </h6>
+                    <p>
+                        <a href="mpsi-mp.html" class="text-reset">MPSI-MP</a>
+                    </p>
+                    <p>
+                        <a href="pcsi-psi.html" class="text-reset">PCSI-PSI</a>
+                    </p>
+                    <p>
+                        <a href="tsi.html" class="text-reset">TSI</a>
+                    </p>
+                    <p>
+                        <a href="concours.html" class="text-reset">CONCOURS</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        prepaacademie@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2023 Copyright:
+        <a class="text-reset fw-bold" href="http://prepaacademie.github.io">PrepaAcademie</a>
+    </div>
+</footer>
 </body>
 </html>
